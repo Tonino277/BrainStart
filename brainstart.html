@@ -1,0 +1,171 @@
+brainstart
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BrainStart - Mockup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-blue-100 to-white min-h-screen p-6 text-gray-900">
+
+  <!-- Header -->
+  <header class="flex items-center justify-center mb-10 space-x-3 select-none">
+    <div class="text-blue-700 text-4xl animate-bounce">✨</div>
+    <h1 class="text-4xl font-extrabold text-blue-800">BrainStart</h1>
+  </header>
+
+  <!-- Landing Section -->
+  <section id="landing" class="max-w-md mx-auto space-y-6 text-center">
+    <p class="text-xl text-gray-700">Accendi la tua mente. Crea la tua startup.</p>
+    <input
+      type="email"
+      placeholder="Inserisci la tua email"
+      class="w-full p-3 border border-blue-300 rounded-md text-lg"
+    />
+    <button
+      onclick="showSection('dashboard')"
+      class="w-full bg-blue-700 text-white text-lg font-semibold py-3 rounded-md hover:bg-blue-800 transition"
+    >
+      Inizia
+    </button>
+  </section>
+
+  <!-- Dashboard Section -->
+  <section id="dashboard" class="max-w-5xl mx-auto space-y-10 hidden">
+    <h2 class="text-3xl font-bold text-blue-700 text-center">Scegli dove iniziare</h2>
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <button onclick="showSection('diario')" class="flex flex-col items-center bg-white rounded-2xl shadow-md p-8 hover:scale-105 transform transition cursor-pointer">
+        <div class="text-blue-600 text-6xl mb-4 animate-pulse select-none">📓</div>
+        <span class="text-lg font-semibold text-center">Diario dell'idea</span>
+      </button>
+      <button onclick="showSection('coach')" class="flex flex-col items-center bg-white rounded-2xl shadow-md p-8 hover:scale-105 transform transition cursor-pointer">
+        <div class="text-blue-600 text-6xl mb-4 animate-pulse select-none">🤖</div>
+        <span class="text-lg font-semibold text-center">AI Coach</span>
+      </button>
+      <button onclick="showSection('corsi')" class="flex flex-col items-center bg-white rounded-2xl shadow-md p-8 hover:scale-105 transform transition cursor-pointer">
+        <div class="text-blue-600 text-6xl mb-4 animate-pulse select-none">📚</div>
+        <span class="text-lg font-semibold text-center">Mini-corsi</span>
+      </button>
+      <button onclick="showSection('community')" class="flex flex-col items-center bg-white rounded-2xl shadow-md p-8 hover:scale-105 transform transition cursor-pointer">
+        <div class="text-blue-600 text-6xl mb-4 animate-pulse select-none">🌐</div>
+        <span class="text-lg font-semibold text-center">Community</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- Diario -->
+  <section id="diario" class="max-w-3xl mx-auto space-y-6 hidden">
+    <button onclick="showSection('dashboard')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center space-x-2">
+      <span class="text-2xl">←</span><span>Indietro</span>
+    </button>
+    <h3 class="text-2xl font-semibold text-blue-700 mt-2">📓 Diario dell'idea</h3>
+    <textarea
+      placeholder="Scrivi qui la tua idea di startup..."
+      class="w-full h-64 p-4 border border-blue-300 rounded-lg text-lg resize-none"
+    ></textarea>
+  </section>
+
+  <!-- AI Coach -->
+  <section id="coach" class="max-w-3xl mx-auto space-y-6 hidden">
+    <button onclick="showSection('dashboard')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center space-x-2">
+      <span class="text-2xl">←</span><span>Indietro</span>
+    </button>
+    <h3 class="text-2xl font-semibold text-blue-700 mt-2">🤖 AI Coach</h3>
+    <p class="text-lg text-gray-600">Fai una domanda al coach AI</p>
+    <input
+      type="text"
+      placeholder="Es: Come trovo il mio mercato ideale?"
+      class="w-full p-3 border border-blue-300 rounded-md text-lg"
+    />
+    <button
+      onclick="alert('Esempio risposta dell AI Coach')"
+      class="bg-blue-700 text-white text-lg font-semibold py-3 px-6 rounded-md hover:bg-blue-800 transition w-full"
+    >
+      Chiedi
+    </button>
+  </section>
+
+  <!-- Mini-corsi -->
+  <section id="corsi" class="max-w-3xl mx-auto space-y-6 hidden">
+    <button onclick="showSection('dashboard')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center space-x-2">
+      <span class="text-2xl">←</span><span>Indietro</span>
+    </button>
+    <h3 class="text-2xl font-semibold text-blue-700 mt-2">📚 Mini-corsi</h3>
+    <div class="space-y-8">
+      <div>
+        <h4 class="text-xl font-semibold text-blue-600 mb-2">Modulo 1: Cos'è una startup?</h4>
+        <ul class="list-disc list-inside text-gray-800 space-y-1">
+          <li>Definizione di startup e differenze con le imprese tradizionali</li>
+          <li>Il mindset imprenditoriale</li>
+          <li>Perché le startup sono importanti nell'innovazione</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xl font-semibold text-blue-600 mb-2">Modulo 2: Business Model Canvas</h4>
+        <ul class="list-disc list-inside text-gray-800 space-y-1">
+          <li>Cos'è il Business Model Canvas</li>
+          <li>I 9 blocchi fondamentali</li>
+          <li>Esempio pratico di Business Model Canvas</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-xl font-semibold text-blue-600 mb-2">Modulo 3: Come validare un'idea</h4>
+        <ul class="list-disc list-inside text-gray-800 space-y-1">
+          <li>Perché validare un'idea è cruciale</li>
+          <li>Metodi di validazione: MVP, customer interviews, landing page</li>
+          <li>Come raccogliere feedback e adattare il prodotto</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Community -->
+  <section id="community" class="max-w-3xl mx-auto space-y-6 hidden">
+    <button onclick="showSection('dashboard')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center space-x-2">
+      <span class="text-2xl">←</span><span>Indietro</span>
+    </button>
+    <h3 class="text-2xl font-semibold text-blue-700 mt-2">🌐 Community</h3>
+    <p class="text-lg text-gray-600">
+      Prossimamente disponibile: uno spazio per connettersi con altri giovani founder.
+    </p>
+  </section>
+
+  <!-- SCRIPT per History API -->
+  <script>
+    const sections = ["landing", "dashboard", "diario", "coach", "corsi", "community"];
+
+    function showSection(id, addToHistory = true) {
+      sections.forEach((sec) => {
+        document.getElementById(sec).classList.add("hidden");
+      });
+      document.getElementById(id).classList.remove("hidden");
+      window.scrollTo(0, 0);
+
+      if (addToHistory) {
+        history.pushState({ section: id }, "", "#" + id);
+      }
+    }
+
+    window.addEventListener("popstate", (event) => {
+      const section = event.state?.section || "landing";
+      showSection(section, false);
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const hash = window.location.hash.replace("#", "");
+      if (sections.includes(hash)) {
+        showSection(hash, false);
+      } else {
+        showSection("landing", false);
+      }
+    });
+  </script>
+</body>
+</html>
