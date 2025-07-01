@@ -1,43 +1,89 @@
-brainstart
+mindflow
 <!DOCTYPE html>
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BrainStart - Mockup</title>
+  <title>MindFlow</title>
+  <meta name="description" content="MindFlow - La tua guida per creare una startup innovativa con mini-corsi, diario, AI coach e community." />
+  <link rel="icon" href="mindflow-logo.png" type="image/png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif;
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    #ideaList {
+      max-height: 200px;
+      overflow-y: auto;
+      border: 1px solid #93c5fd;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      background: white;
+    }
+    #ideaList li {
+      padding: 0.25rem 0.5rem;
+      border-bottom: 1px solid #d1d5db;
+      cursor: pointer;
+    }
+    #ideaList li:last-child {
+      border-bottom: none;
+    }
+    #ideaList li:hover {
+      background-color: #bfdbfe;
+    }
+    /* Stile slogan */
+    #landing p.slogan {
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: #1e40af; /* blu simile MindFlow */
+      margin-bottom: 1rem;
+      user-select: none;
     }
   </style>
 </head>
 <body class="bg-gradient-to-b from-blue-100 to-white min-h-screen p-6 text-gray-900">
 
   <!-- Header -->
-  <header class="flex items-center justify-center mb-10 space-x-3 select-none">
+  <header class="flex items-center justify-center mb-10 select-none space-x-3">
     <div class="text-blue-700 text-4xl animate-bounce">✨</div>
-    <h1 class="text-4xl font-extrabold text-blue-800">BrainStart</h1>
+    <h1 class="text-3xl font-bold text-blue-800 select-text">MindFlow</h1>
   </header>
 
   <!-- Landing Section -->
   <section id="landing" class="max-w-md mx-auto space-y-6 text-center">
-    <p class="text-xl text-gray-700">Accendi la tua mente. Crea la tua startup.</p>
-    <input
-      type="email"
-      placeholder="Inserisci la tua email"
-      class="w-full p-3 border border-blue-300 rounded-md text-lg"
-    />
-    <button
-      onclick="showSection('dashboard')"
-      class="w-full bg-blue-700 text-white text-lg font-semibold py-3 rounded-md hover:bg-blue-800 transition"
-    >
-      Inizia
+    <p class="slogan">Accendi la tua mente, crea la tua startup!</p>
+    <button id="btnAccedi" class="w-full bg-blue-700 text-white text-lg font-semibold py-3 rounded-md hover:bg-blue-800 transition">
+      Accedi
     </button>
+    <button id="btnRegistrati" class="w-full bg-green-700 text-white text-lg font-semibold py-3 rounded-md hover:bg-green-800 transition">
+      Registrati
+    </button>
+    <button id="btnEsplora" class="w-full bg-gray-700 text-white text-lg font-semibold py-3 rounded-md hover:bg-gray-800 transition">
+      Esplora
+    </button>
+
+    <!-- Accedi form -->
+    <div id="formAccedi" class="hidden space-y-4 mt-4">
+      <input id="accediEmail" type="email" placeholder="Email" class="w-full p-3 border border-blue-300 rounded-md text-lg" />
+      <input id="accediUsername" type="text" placeholder="Nome utente" class="w-full p-3 border border-blue-300 rounded-md text-lg" />
+      <button id="submitAccedi" class="w-full bg-blue-700 text-white text-lg font-semibold py-3 rounded-md hover:bg-blue-800 transition">Accedi</button>
+    </div>
+
+    <!-- Registrati form -->
+    <div id="formRegistrati" class="hidden space-y-4 mt-4">
+      <input id="regNome" type="text" placeholder="Nome" class="w-full p-3 border border-green-300 rounded-md text-lg" />
+      <input id="regCognome" type="text" placeholder="Cognome" class="w-full p-3 border border-green-300 rounded-md text-lg" />
+      <input id="regDataNascita" type="date" placeholder="Data di nascita" class="w-full p-3 border border-green-300 rounded-md text-lg" />
+      <input id="regEmail" type="email" placeholder="Email" class="w-full p-3 border border-green-300 rounded-md text-lg" />
+      <input id="regUsername" type="text" placeholder="Nome utente" class="w-full p-3 border border-green-300 rounded-md text-lg" />
+      <input id="regPassword" type="password" placeholder="Password" class="w-full p-3 border border-green-300 rounded-md text-lg" />
+      <input id="regConfermaPassword" type="password" placeholder="Conferma Password" class="w-full p-3 border border-green-300 rounded-md text-lg" />
+      <button id="submitRegistrati" class="w-full bg-green-700 text-white text-lg font-semibold py-3 rounded-md hover:bg-green-800 transition">Registrati</button>
+    </div>
   </section>
 
-  <!-- Dashboard Section -->
+  <!-- Dashboard -->
   <section id="dashboard" class="max-w-5xl mx-auto space-y-10 hidden">
     <h2 class="text-3xl font-bold text-blue-700 text-center">Scegli dove iniziare</h2>
     <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -61,22 +107,28 @@ brainstart
   </section>
 
   <!-- Diario -->
-  <section id="diario" class="max-w-3xl mx-auto space-y-6 hidden">
-    <button onclick="showSection('dashboard')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center space-x-2">
-      <span class="text-2xl">←</span><span>Indietro</span>
-    </button>
-    <h3 class="text-2xl font-semibold text-blue-700 mt-2">📓 Diario dell'idea</h3>
+  <section id="diario" class="max-w-3xl mx-auto space-y-4 hidden">
+    <h3 class="text-2xl font-semibold text-blue-700 mt-2 flex items-center space-x-3">
+      <span>📓 Diario dell'idea</span>
+    </h3>
+    <input id="ideaTitle" type="text" placeholder="Titolo" class="w-full p-3 border border-blue-300 rounded-md text-lg" />
     <textarea
+      id="ideaInput"
       placeholder="Scrivi qui la tua idea di startup..."
-      class="w-full h-64 p-4 border border-blue-300 rounded-lg text-lg resize-none"
+      class="w-full h-48 p-4 border border-blue-300 rounded-lg text-lg resize-none"
     ></textarea>
+
+    <div class="flex space-x-4">
+      <button id="saveIdeaBtn" class="bg-green-600 text-white px-6 py-2 rounded-md hover:bg-green-700 transition font-semibold">Salva idea</button>
+      <button id="deleteIdeaBtn" class="bg-red-600 text-white px-6 py-2 rounded-md hover:bg-red-700 transition font-semibold">Elimina idea</button>
+    </div>
+
+    <h4 class="text-xl font-semibold text-blue-600 mt-6">Cronologia idee salvate</h4>
+    <ul id="ideaList" class="max-w-full"></ul>
   </section>
 
   <!-- AI Coach -->
   <section id="coach" class="max-w-3xl mx-auto space-y-6 hidden">
-    <button onclick="showSection('dashboard')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center space-x-2">
-      <span class="text-2xl">←</span><span>Indietro</span>
-    </button>
     <h3 class="text-2xl font-semibold text-blue-700 mt-2">🤖 AI Coach</h3>
     <p class="text-lg text-gray-600">Fai una domanda al coach AI</p>
     <input
@@ -85,7 +137,7 @@ brainstart
       class="w-full p-3 border border-blue-300 rounded-md text-lg"
     />
     <button
-      onclick="alert('Esempio risposta dell AI Coach')"
+      id="askAI"
       class="bg-blue-700 text-white text-lg font-semibold py-3 px-6 rounded-md hover:bg-blue-800 transition w-full"
     >
       Chiedi
@@ -94,9 +146,6 @@ brainstart
 
   <!-- Mini-corsi -->
   <section id="corsi" class="max-w-3xl mx-auto space-y-6 hidden">
-    <button onclick="showSection('dashboard')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center space-x-2">
-      <span class="text-2xl">←</span><span>Indietro</span>
-    </button>
     <h3 class="text-2xl font-semibold text-blue-700 mt-2">📚 Mini-corsi</h3>
     <div class="space-y-8">
       <div>
@@ -128,16 +177,32 @@ brainstart
 
   <!-- Community -->
   <section id="community" class="max-w-3xl mx-auto space-y-6 hidden">
-    <button onclick="showSection('dashboard')" class="text-blue-600 hover:text-blue-800 font-medium flex items-center space-x-2">
-      <span class="text-2xl">←</span><span>Indietro</span>
-    </button>
     <h3 class="text-2xl font-semibold text-blue-700 mt-2">🌐 Community</h3>
-    <p class="text-lg text-gray-600">
-      Prossimamente disponibile: uno spazio per connettersi con altri giovani founder.
+
+    <p id="communityNoNickMsg" class="text-red-600 font-semibold" style="display:none;">
+      Devi registrarti con un nickname per poter usare la community. Torna alla pagina iniziale.
     </p>
+
+    <div id="communityChatContainer" style="display:none;">
+      <textarea
+        id="communityInput"
+        placeholder="Scrivi un messaggio alla community..."
+        class="w-full h-24 p-3 border border-blue-300 rounded-md text-lg resize-none mb-2"
+      ></textarea>
+
+      <button
+        id="postMessageBtn"
+        class="bg-blue-700 text-white text-lg font-semibold py-3 px-6 rounded-md hover:bg-blue-800 transition w-full"
+      >
+        Pubblica
+      </button>
+
+      <h4 class="text-xl font-semibold text-blue-600 mt-6">Messaggi della Community</h4>
+      <ul id="communityMessages" class="max-w-full border border-blue-300 rounded-md p-4 space-y-4 max-h-60 overflow-y-auto bg-white"></ul>
+    </div>
   </section>
 
-  <!-- SCRIPT per History API -->
+  <!-- SCRIPT -->
   <script>
     const sections = ["landing", "dashboard", "diario", "coach", "corsi", "community"];
 
@@ -158,6 +223,271 @@ brainstart
       showSection(section, false);
     });
 
+    // --- Landing buttons and forms ---
+    const btnAccedi = document.getElementById("btnAccedi");
+    const btnRegistrati = document.getElementById("btnRegistrati");
+    const btnEsplora = document.getElementById("btnEsplora");
+    const formAccedi = document.getElementById("formAccedi");
+    const formRegistrati = document.getElementById("formRegistrati");
+
+    btnAccedi.addEventListener("click", () => {
+      formAccedi.classList.remove("hidden");
+      formRegistrati.classList.add("hidden");
+    });
+
+    btnRegistrati.addEventListener("click", () => {
+      formRegistrati.classList.remove("hidden");
+      formAccedi.classList.add("hidden");
+    });
+
+    btnEsplora.addEventListener("click", () => {
+      formAccedi.classList.add("hidden");
+      formRegistrati.classList.add("hidden");
+      showSection("dashboard");
+    });
+
+    // --- Accedi form ---
+    const accediEmail = document.getElementById("accediEmail");
+    const accediUsername = document.getElementById("accediUsername");
+    const submitAccedi = document.getElementById("submitAccedi");
+
+    submitAccedi.addEventListener("click", () => {
+      const email = accediEmail.value.trim();
+      const username = accediUsername.value.trim();
+
+      if (!email) {
+        alert("Inserisci una email valida!");
+        return;
+      }
+      if (!username) {
+        alert("Inserisci il nome utente!");
+        return;
+      }
+
+      localStorage.setItem("mindflowEmail", email);
+      localStorage.setItem("mindflowNickname", username);
+
+      showSection("dashboard");
+    });
+
+    // --- Registrati form ---
+    const regNome = document.getElementById("regNome");
+    const regCognome = document.getElementById("regCognome");
+    const regDataNascita = document.getElementById("regDataNascita");
+    const regEmail = document.getElementById("regEmail");
+    const regUsername = document.getElementById("regUsername");
+    const regPassword = document.getElementById("regPassword");
+    const regConfermaPassword = document.getElementById("regConfermaPassword");
+    const submitRegistrati = document.getElementById("submitRegistrati");
+
+    submitRegistrati.addEventListener("click", () => {
+      const nome = regNome.value.trim();
+      const cognome = regCognome.value.trim();
+      const dataNascita = regDataNascita.value;
+      const email = regEmail.value.trim();
+      const username = regUsername.value.trim();
+      const password = regPassword.value;
+      const confermaPassword = regConfermaPassword.value;
+
+      if (!nome || !cognome || !dataNascita || !email || !username || !password || !confermaPassword) {
+        alert("Compila tutti i campi!");
+        return;
+      }
+      if (password !== confermaPassword) {
+        alert("Le password non corrispondono!");
+        return;
+      }
+
+      localStorage.setItem("mindflowNome", nome);
+      localStorage.setItem("mindflowCognome", cognome);
+      localStorage.setItem("mindflowDataNascita", dataNascita);
+      localStorage.setItem("mindflowEmail", email);
+      localStorage.setItem("mindflowNickname", username);
+      localStorage.setItem("mindflowPassword", password);
+
+      showSection("dashboard");
+    });
+
+    // --- Diario ---
+    const ideaTitle = document.getElementById("ideaTitle");
+    const ideaInput = document.getElementById("ideaInput");
+    const ideaList = document.getElementById("ideaList");
+    const saveIdeaBtn = document.getElementById("saveIdeaBtn");
+    const deleteIdeaBtn = document.getElementById("deleteIdeaBtn");
+
+    function loadIdeas() {
+      const savedIdeas = JSON.parse(localStorage.getItem("mindflowIdeas") || "[]");
+      ideaList.innerHTML = "";
+      savedIdeas.slice().reverse().forEach((ideaObj, revIndex) => {
+        const index = savedIdeas.length - 1 - revIndex;
+        const li = document.createElement("li");
+        li.className = "cursor-pointer border-b border-gray-200 py-1";
+        li.title = "Clicca per modificare";
+
+        const titleSpan = document.createElement("strong");
+        titleSpan.textContent = ideaObj.title || "(Senza titolo)";
+        titleSpan.className = "text-blue-700";
+
+        const textSpan = document.createElement("span");
+        textSpan.textContent = " — " + ideaObj.text;
+
+        li.appendChild(titleSpan);
+        li.appendChild(textSpan);
+
+        li.addEventListener("click", () => {
+          ideaTitle.value = ideaObj.title || "";
+          ideaInput.value = ideaObj.text || "";
+          ideaInput.dataset.editIndex = index;
+        });
+        ideaList.appendChild(li);
+      });
+    }
+
+    saveIdeaBtn.addEventListener("click", () => {
+      const title = ideaTitle.value.trim();
+      const text = ideaInput.value.trim();
+      if (!text) {
+        alert("Scrivi prima qualcosa da salvare!");
+        return;
+      }
+      let ideas = JSON.parse(localStorage.getItem("mindflowIdeas") || "[]");
+      if (ideaInput.dataset.editIndex !== undefined) {
+        ideas[ideaInput.dataset.editIndex] = { title, text };
+        delete ideaInput.dataset.editIndex;
+      } else {
+        ideas.push({ title, text });
+      }
+      localStorage.setItem("mindflowIdeas", JSON.stringify(ideas));
+      ideaTitle.value = "";
+      ideaInput.value = "";
+      loadIdeas();
+    });
+
+    deleteIdeaBtn.addEventListener("click", () => {
+      if (ideaInput.dataset.editIndex === undefined) {
+        alert("Seleziona un'idea dalla cronologia per eliminarla.");
+        return;
+      }
+      let ideas = JSON.parse(localStorage.getItem("mindflowIdeas") || "[]");
+      ideas.splice(ideaInput.dataset.editIndex, 1);
+      delete ideaInput.dataset.editIndex;
+      localStorage.setItem("mindflowIdeas", JSON.stringify(ideas));
+      ideaTitle.value = "";
+      ideaInput.value = "";
+      loadIdeas();
+    });
+
+    // --- AI Coach ---
+    const askAI = document.getElementById("askAI");
+    askAI.addEventListener("click", () => {
+      alert("Presto in arrivo!");
+    });
+
+    // --- Community ---
+    const communityNoNickMsg = document.getElementById("communityNoNickMsg");
+    const communityChatContainer = document.getElementById("communityChatContainer");
+    const communityInput = document.getElementById("communityInput");
+    const postMessageBtn = document.getElementById("postMessageBtn");
+    const communityMessages = document.getElementById("communityMessages");
+
+    function formatTimestamp(dateStr) {
+      const d = new Date(dateStr);
+      if (isNaN(d)) return "";
+      return d.toLocaleString("it-IT", { dateStyle: "short", timeStyle: "short" });
+    }
+
+    function loadCommunityMessages() {
+      const messages = JSON.parse(localStorage.getItem("mindflowCommunity") || "[]");
+      communityMessages.innerHTML = "";
+      // Dal più recente al più vecchio
+      messages.slice().reverse().forEach((msg, idx) => {
+        if (!msg.nickname) return; // elimina anonimi
+        const li = document.createElement("li");
+        li.className = "border-b border-gray-200 pb-2 text-gray-800 relative";
+
+        const header = document.createElement("div");
+        header.className = "text-sm text-blue-700 font-semibold flex justify-between items-center mb-1";
+
+        const nickSpan = document.createElement("span");
+        nickSpan.textContent = msg.nickname;
+
+        const timeSpan = document.createElement("span");
+        timeSpan.className = "text-gray-500 text-xs italic ml-2";
+        timeSpan.textContent = formatTimestamp(msg.timestamp);
+
+        header.appendChild(nickSpan);
+        header.appendChild(timeSpan);
+
+        const textP = document.createElement("p");
+        textP.textContent = msg.text;
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "absolute bottom-1 right-1 text-red-600 hover:text-red-800 text-xl";
+        deleteBtn.innerHTML = "🗑️";
+        deleteBtn.title = "Elimina messaggio";
+        deleteBtn.addEventListener("click", () => {
+          const actualIndex = messages.length - 1 - idx;
+          const currentNick = localStorage.getItem("mindflowNickname");
+          if (currentNick !== msg.nickname) {
+            alert("Puoi eliminare solo i tuoi messaggi!");
+            return;
+          }
+          deleteCommunityMessage(actualIndex);
+        });
+
+        li.appendChild(header);
+        li.appendChild(textP);
+        li.appendChild(deleteBtn);
+
+        communityMessages.appendChild(li);
+      });
+    }
+
+    function deleteCommunityMessage(index) {
+      const messages = JSON.parse(localStorage.getItem("mindflowCommunity") || "[]");
+      messages.splice(index, 1);
+      localStorage.setItem("mindflowCommunity", JSON.stringify(messages));
+      loadCommunityMessages();
+    }
+
+    postMessageBtn.addEventListener("click", () => {
+      const nick = localStorage.getItem("mindflowNickname") || "";
+      const text = communityInput.value.trim();
+
+      if (!nick) {
+        alert("Devi prima registrarti con un nickname!");
+        return;
+      }
+      if (!text) {
+        alert("Scrivi un messaggio prima di pubblicare!");
+        return;
+      }
+
+      const messages = JSON.parse(localStorage.getItem("mindflowCommunity") || "[]");
+      messages.push({
+        nickname: nick,
+        text: text,
+        timestamp: new Date().toISOString(),
+      });
+      localStorage.setItem("mindflowCommunity", JSON.stringify(messages));
+
+      communityInput.value = "";
+      loadCommunityMessages();
+    });
+
+    function checkCommunityAccess() {
+      const nick = localStorage.getItem("mindflowNickname");
+      if (!nick) {
+        communityNoNickMsg.style.display = "block";
+        communityChatContainer.style.display = "none";
+      } else {
+        communityNoNickMsg.style.display = "none";
+        communityChatContainer.style.display = "block";
+        loadCommunityMessages();
+      }
+    }
+
+    // --- Inizializzazione ---
     window.addEventListener("DOMContentLoaded", () => {
       const hash = window.location.hash.replace("#", "");
       if (sections.includes(hash)) {
@@ -165,7 +495,13 @@ brainstart
       } else {
         showSection("landing", false);
       }
+      loadIdeas();
+      checkCommunityAccess();
     });
   </script>
 </body>
 </html>
+
+
+
+
